@@ -3,13 +3,13 @@ layout: default
 title: Home
 ---
 
-[Sobre mim](/about)
-[Projetos](/projects)
-
 ## POSTS:
 
-{% for post in site.posts %}
-
-- [{{ post.title }}]({{ post.url }})
-  <small>{{ post.date | date: %d/%m/%Y }}</small>
+<ul>
+  {% assign posts = site.posts | sort: "date" | reverse %}
+  {% for posts in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
   {% endfor %}
+</ul>
