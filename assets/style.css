@@ -42,6 +42,11 @@ nav a.active {
   margin: auto;
 }
 
+nav.container {
+  margin: 0;
+  max-width: none;
+}
+
 .post {
   max-width: 800px;
   margin: auto;
