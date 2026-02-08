@@ -16,13 +16,14 @@ Estou aberto a novas oportunidades e colaborações que possibilitem crescimento
 
 ## Formação
 
-- Bacharelado em Engenharia de Computação - CEFET-MG Leopoldina X (2024-)
+- Bacharelado em Engenharia de Computação - CEFET-MG Leopoldina X (Out 2024 -)
 
 ## Experiência
 
-- Iniciação Cientifica: Desenvolvimento do jogo Arcade estilo Pac-Man com Integração de Técnicas de Inteligência Artificial X (2025-);
+- Iniciação Cientifica: Desenvolvimento do jogo Arcade estilo Pac-Man com Integração de Técnicas de Inteligência Artificial X (Out 2025 -);
+- Projeto de Extensão: Oktoplus - Programação Competitiva X (Jan 2025 - Dez 2025);
 
 ## Cursos & Certificados
 
-- Minicurso: Estruturas de Dados e Algoritmos (Augusto Galego) X (2025);
-- Minicurso: Algoritmos e Lógica de Programação - O Curso COMPLETO (Nélio Alves) X (2025);
+- Minicurso: Estruturas de Dados e Algoritmos (Augusto Galego) X (Abr 2025);
+- Minicurso: Algoritmos e Lógica de Programação - O Curso COMPLETO (Nélio Alves) X (Jan 2025);

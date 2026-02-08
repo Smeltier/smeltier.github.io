@@ -1,2 +1,7 @@
 title: Smelteir's Homepage
 markdown: kramdown
+
+collections:
+  projects:
+    outputs: true
+    permalink: /projects/:name/
