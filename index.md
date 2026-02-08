@@ -3,9 +3,7 @@ layout: default
 title: Home
 ---
 
-# Olá, eu sou o Gabriel Gonçalves
-
-Sou estudante de Engenharia de Computação no CEFET-MG, curto algoritmos e estruturas de dados.
+[Sobre mim](/about)
 
 ## POSTS:
 
