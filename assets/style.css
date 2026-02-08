@@ -5,7 +5,7 @@ body {
     sans-serif;
   background: #0f172a;
   color: #e5e7eb;
-  margin: auto;
+  margin: 0;
 }
 
 header {
@@ -79,4 +79,11 @@ nav a.active {
   max-width: 800px;
   margin: auto;
   padding: 2rem;
+}
+
+.site-header {
+  background: #1e293b;
+  padding: 1rem 0;
+  margin-bottom: 2.5rem;
+  text-align: center;
 }
