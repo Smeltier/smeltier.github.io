@@ -7,6 +7,7 @@ body {
   color: #e5e7eb;
   max-width: 800px;
   margin: auto;
+  margin-bottom: 2rem;
   padding: 2rem;
 }
 
@@ -17,4 +18,18 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #38bdf8;
 }
