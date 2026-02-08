@@ -2,7 +2,7 @@ body {
   font-family:
     system-ui,
     -apple-system,
-    -sans-serif;
+    sans-serif;
   background: #0f172a;
   color: #e5e7eb;
   max-width: 800px;
@@ -12,9 +12,10 @@ body {
 }
 
 header {
-  background: #388fff;
+  background: #1e293b;
   padding: 1rem 0;
   margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 a {
@@ -44,4 +45,9 @@ nav a:hover {
 nav a.active {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
 }
