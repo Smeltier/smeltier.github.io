@@ -42,11 +42,6 @@ nav a.active {
   margin: auto;
 }
 
-nav.container {
-  margin: 0;
-  max-width: none;
-}
-
 .post {
   max-width: 800px;
   margin: auto;
@@ -84,6 +79,10 @@ nav.container {
   padding: 1rem 0;
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-bottom: 2.5rem;
+}
+
+.site-header .container {
+  max-width: none;
+  margin: 0;
 }
