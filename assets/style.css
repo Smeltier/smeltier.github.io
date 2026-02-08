@@ -5,10 +5,7 @@ body {
     sans-serif;
   background: #0f172a;
   color: #e5e7eb;
-  max-width: 800px;
   margin: auto;
-  margin-bottom: 2rem;
-  padding: 2rem;
 }
 
 header {
@@ -76,4 +73,10 @@ nav a.active {
 
 .post-content {
   line-height: 1.7;
+}
+
+.site-content {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
 }
