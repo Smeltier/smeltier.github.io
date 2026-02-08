@@ -4,6 +4,7 @@ title: Home
 ---
 
 [Sobre mim](/about)
+[Projetos](/projects)
 
 ## POSTS:
 
