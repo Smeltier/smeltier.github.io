@@ -1,8 +1,10 @@
 ---
 layout: default
-title: Jogo de Xadrez em Java
+title: Xadrez em Java
+description: Jogo de xadrez feito totalmente em Java.
 date: 2025-12-15
 tags: [Java, dev]
+github: https://github.com/Smeltier/xadrez
 ---
 
 ## 1. Visão Geral

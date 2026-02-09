@@ -6,9 +6,9 @@ permalink: /projects/
 
 # Projetos
 
-{% for projects in site.projects %}
+{% for project in site.projects %}
 
-## [{{ projects.title }}]({{ projects.url }})
+## [{{ project.title }}]({{ project.url }})
 
 {{ project.description }}
 
