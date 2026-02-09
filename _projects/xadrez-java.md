@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: default
 title: Jogo de Xadrez em Java
 date: 2025-12-15
 tags: [Java, dev]
