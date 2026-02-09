@@ -14,6 +14,9 @@ Com o tempo, comecei a ver muitos vídeos sobre _Vim_ e _Neovim_ no _YouTube_, e
 
 Entre _Vim_ e _Neovim_, acabei optando pelo _Neovim_, principalmente por ele ser um pouco mais amigável para iniciantes e ter um ecossistema mais moderno. Nesse processo, descobri o _LazyVim_, que facilita bastante a configuração inicial e a instalação de _plugins_.
 
+<img src="../assets/lazy_vim_initial.png" alt="Tela Inicial do LazyVim" class="center-image" />
+<p class="image-caption">Imagem 1 - Tela inicial do LazyVim</p>
+
 Mesmo já tendo uma noção básica dos comandos, a adaptação não foi simples. Quando começamos a usar o teclado, nos acostumamos a mover o cursor com as setinhas, mas no _Vim/Neovim_ isso muda completamente. Aqui usamos `h`, `j`, `k` e `l` para mover o cursor para a esquerda, baixo, cima e direita, respectivamente. Sim, é estranho no começo. Forçar o uso dessas teclas chega a parecer uma pequena tortura, porque o cérebro insiste em ir para as setas. Ainda assim, decidi persistir e me obrigar a usar os motions.
 
 Depois disso, fui atrás das configurações essenciais para as linguagens que utilizo. Pelo _Mason_, uma ferramenta que já vem integrada ao _LazyVim_, instalei os _LSPs_ (_Language Server Protocol_) para _C/C++, Python, Java_, entre outros, além de algumas ferramentas adicionais, como o _Prettier_. A facilidade para instalar e gerenciar esse tipo de coisa foi uma grata surpresa.
@@ -25,53 +28,6 @@ Outra customização interessante foi em relação às janelas. Para abrir uma n
 _Disclaimer_: ainda não tenho certeza se o termo “janela” é o mais correto aqui. Já vi muita gente se referindo a isso como _buffer_. Ainda estou aprendendo essas distinções.
 
 Também mapeei os comandos `sh`, `sj`, `sk` e `sl` para navegar entre janelas, o que deixou tudo bem mais intuitivo.
-
-Deixo abaixo todos as _binds_ que fiz.
-
-``` lua
---- Increment/Decrement
-keymap.set("n", "+", "<C-a>")
-keymap.set("n", "-", "<C-x>")
-
---- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
-
---- Delete a word backwards
-keymap.set("n", "dw", "vb_d")
-
---- New tab
-keymap.set("n", "te", "<Cmd>tabedit<CR>", opts)
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
-
---- Split window
-keymap.set("n", "ss", ":split<Return>", opts)
-keymap.set("n", "sv", ":vsplit<Return>", opts)
-
---- Move window
-keymap.set("n", "sh", "<C-w>h")
-keymap.set("n", "sk", "<C-w>k")
-keymap.set("n", "sj", "<C-w>j")
-keymap.set("n", "sl", "<C-w>l")
-
---- Diagnostics
-keymap.set("n", "<C-j>", function()
-  vim.diagnostic.goto_next()
-end, opts)
-
---- Line moving
-keymap.set("n", "<leader>k", function()
-  local n = vim.v.count1
-  vim.cmd("move .-" .. n)
-  vim.cmd("normal ==")
-end, opts)
-
-keymap.set("n", "<leader>j", function()
-  local n = vim.v.count1
-  vim.cmd("move ." .. n)
-  vim.cmd("normal ==")
-end, opts)
-```
 
 Talvez você tenha reparado que mencionei termos como “modo normal” e “modo de visualização”. Essa é uma das principais características do _Vim/Neovim_: ele é um editor modal. No _normal_ mode você usa os _motions_ e comandos para navegar e manipular o texto. No _insert_ mode é onde você realmente digita e edita o conteúdo. Existem outros modos, como o visual, mas ainda não me aprofundei o suficiente neles, então vou deixar isso para outro momento.
 
