@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xadrez em Java | Smelteir's Homepage</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container">
+        <a href="/" class="">HOME</a>
+        <a href="/about" class=""
+          >ABOUT</a
+        >
+        <a
+          href="/projects"
+          class=""
+          >PROJECTS</a
+        >
+      </nav>
+    </header>
+    <main class="site-content">
+      <h2 id="1-visão-geral">1. Visão Geral</h2>
+
+<p>Este documento fornece as diretrizes para a execução e operação do sistema de Xadrez baseado em linha de comando (CLI), desenvolvido em linguagem Java. O sistema implementa as regras oficiais da FIDE (Federação Internacional de Xadrez), incluindo validação rigorosa de movimentos, detecção de estados de jogo (xeque/xeque-mate/afogamento) e movimentos especiais, utilizando uma arquitetura orientada a objetos (MVC).</p>
+
+<h2 id="2-requisitos-do-sistema">2. Requisitos do Sistema</h2>
+
+<p>Para a execução adequada do software, o ambiente deve possuir:</p>
+
+<ul>
+  <li><strong>Java Development Kit (JDK):</strong> Versão 17 ou superior instalada e configurada nas variáveis de ambiente.</li>
+  <li><strong>Terminal de Comando:</strong> Bash (Linux/macOS), PowerShell ou CMD (Windows).</li>
+</ul>
+
+<h2 id="3-instalação-e-execução-via-scripts">3. Instalação e Execução (Via Scripts)</h2>
+
+<p>O projeto inclui scripts de automação na raiz do diretório para facilitar a compilação e execução imediata.</p>
+
+<h3 id="31-execução-no-windows">3.1. Execução no Windows</h3>
+
+<p>Para ambientes Windows, utilize o arquivo em lote <code class="language-plaintext highlighter-rouge">.bat</code>:</p>
+
+<ol>
+  <li>Navegue até o diretório raiz do projeto.</li>
+  <li>Dê um duplo clique no arquivo <code class="language-plaintext highlighter-rouge">play.bat</code> ou execute-o via terminal:</li>
+</ol>
+
+<pre><code class="language-cmd">play.bat
+</code></pre>
+
+<h3 id="32-execução-no-linux--macos">3.2. Execução no Linux / macOS</h3>
+
+<p>Para ambientes Unix-based, utilize o script Shell <code class="language-plaintext highlighter-rouge">.sh</code>:</p>
+
+<ol>
+  <li>Abra o terminal no diretório raiz do projeto.</li>
+  <li>Conceda permissão de execução ao script (necessário apenas na primeira vez):</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x play.sh
+</code></pre></div></div>
+
+<ol>
+  <li>Execute o script:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./play.sh
+</code></pre></div></div>
+
+<h2 id="4-configuração-da-partida">4. Configuração da Partida</h2>
+
+<p>Ao inicializar o sistema, será necessário configurar os parâmetros da partida:</p>
+
+<ol>
+  <li><strong>Definição dos Jogadores:</strong> Insira os nomes para o Jogador 1 e Jogador 2 conforme solicitado.</li>
+  <li><strong>Sorteio de Cores:</strong> O sistema solicitará a definição do condutor das peças BRANCAS.</li>
+</ol>
+
+<ul>
+  <li>Digite <code class="language-plaintext highlighter-rouge">1</code> para selecionar o Jogador 1.</li>
+  <li>Digite <code class="language-plaintext highlighter-rouge">2</code> para selecionar o Jogador 2.</li>
+</ul>
+
+<h2 id="5-interface-e-comandos-de-jogo">5. Interface e Comandos de Jogo</h2>
+
+<p>O tabuleiro é renderizado via console utilizando caracteres Unicode. O sistema de coordenadas segue o padrão internacional:</p>
+
+<ul>
+  <li><strong>Colunas:</strong> Letras de <strong>a</strong> a <strong>h</strong>.</li>
+  <li><strong>Linhas:</strong> Números de <strong>1</strong> a <strong>8</strong>.</li>
+</ul>
+
+<h3 id="51-realizando-movimentos">5.1. Realizando Movimentos</h3>
+
+<p>A entrada de dados deve seguir a <strong>Notação Algébrica Completa</strong>, especificando a coordenada de origem e a coordenada de destino separadas por um espaço.</p>
+
+<ul>
+  <li><strong>Sintaxe:</strong> <code class="language-plaintext highlighter-rouge">[origem] [destino]</code></li>
+  <li><strong>Exemplo:</strong> <code class="language-plaintext highlighter-rouge">e2 e4</code> (Move a peça da casa e2 para a casa e4).</li>
+</ul>
+
+<h3 id="52-validação-de-regras">5.2. Validação de Regras</h3>
+
+<p>O motor do jogo processa cada entrada verificando:</p>
+
+<ul>
+  <li>A existência de peça na origem e a correspondência de cor com o turno atual.</li>
+  <li>A geometria válida de movimento da peça específica.</li>
+  <li>A inexistência de obstruções no trajeto (exceto para o Cavalo).</li>
+  <li>A legalidade do movimento em relação à segurança do Rei (impossibilidade de auto-xeque).</li>
+</ul>
+
+<h2 id="6-movimentos-especiais">6. Movimentos Especiais</h2>
+
+<p>O sistema suporta manobras avançadas que requerem entradas específicas ou condições de contexto.</p>
+
+<h3 id="61-roque-castling">6.1. Roque (Castling)</h3>
+
+<p>Permite o movimento simultâneo do Rei e da Torre.</p>
+
+<ul>
+  <li><strong>Execução:</strong> O jogador deve comandar o movimento do <strong>Rei</strong> por duas casas em direção à Torre escolhida.</li>
+  <li><strong>Comando (Brancas):</strong> <code class="language-plaintext highlighter-rouge">e1 g1</code> (Roque Menor) ou <code class="language-plaintext highlighter-rouge">e1 c1</code> (Roque Maior).</li>
+  <li><strong>Comando (Pretas):</strong> <code class="language-plaintext highlighter-rouge">e8 g8</code> (Roque Menor) ou <code class="language-plaintext highlighter-rouge">e8 c8</code> (Roque Maior).</li>
+  <li><em>Nota: A Torre será movida automaticamente pelo sistema se a manobra for válida e o caminho estiver seguro.</em></li>
+</ul>
+
+<h3 id="62-en-passant">6.2. En Passant</h3>
+
+<p>Captura especial de peões.</p>
+
+<ul>
+  <li><strong>Condição:</strong> Ocorre quando um peão adversário avança duas casas a partir da posição inicial, parando ao lado do seu peão.</li>
+  <li><strong>Execução:</strong> O jogador deve mover seu peão para a casa diagonal vazia imediatamente atrás do peão adversário.</li>
+  <li><strong>Comando:</strong> Inserir as coordenadas de origem e da casa de destino (vazia).</li>
+</ul>
+
+<h3 id="63-promoção-promotion">6.3. Promoção (Promotion)</h3>
+
+<p>Transformação obrigatória de um peão que atinge a última fileira do tabuleiro.</p>
+
+<ul>
+  <li><strong>Condição:</strong> Um peão (Branco na linha 8 ou Preto na linha 1) conclui seu movimento.</li>
+  <li><strong>Execução:</strong> O sistema interromperá o fluxo automaticamente e apresentará um menu de seleção.</li>
+  <li><strong>Opções:</strong> O jogador deve digitar o número correspondente à peça desejada:</li>
+  <li><code class="language-plaintext highlighter-rouge">1</code> - Rainha (Queen)</li>
+  <li><code class="language-plaintext highlighter-rouge">2</code> - Torre (Rook)</li>
+  <li><code class="language-plaintext highlighter-rouge">3</code> - Cavalo (Knight)</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">4</code> - Bispo (Bishop)</p>
+  </li>
+  <li><strong>Resultado:</strong> O peão é imediatamente substituído pela peça escolhida na mesma casa.</li>
+</ul>
+
+<h2 id="7-estados-do-jogo">7. Estados do Jogo</h2>
+
+<p>O sistema fornece feedback em tempo real sobre o estado da partida:</p>
+
+<ul>
+  <li><strong>ALERTA DE XEQUE:</strong> Indica que o Rei está sob ataque imediato. O jogador é obrigado a realizar um movimento defensivo.</li>
+  <li><strong>ERRO DE MOVIMENTO:</strong> Informa tentativas de jogadas ilegais (geometria incorreta, obstrução ou exposição do Rei ao perigo).</li>
+  <li><strong>XEQUE-MATE:</strong> Ocorre quando o Rei está em xeque e não existem movimentos legais disponíveis. O sistema encerra a execução e declara o vencedor.</li>
+  <li><strong>EMPATE POR AFOGAMENTO (STALEMATE):</strong> Ocorre quando o jogador que tem a vez de jogar não possui movimentos legais, mas seu Rei não está em xeque. O sistema encerra a partida declarando empate.</li>
+</ul>
+
+<h2 id="8-solução-de-problemas-e-avançado">8. Solução de Problemas e Avançado</h2>
+
+<h3 id="81-problema-de-fonte-retângulosquadrados">8.1. Problema de Fonte (Retângulos/Quadrados)</h3>
+
+<p>Caso as peças apareçam como retângulos vazios (<code class="language-plaintext highlighter-rouge">□</code>), o terminal está usando uma fonte que não suporta símbolos de xadrez Unicode.</p>
+
+<ul>
+  <li><strong>Solução:</strong> Nas propriedades do terminal (Prompt de Comando ou PowerShell), altere a fonte para <strong>MS Gothic</strong>, <strong>NSimSun</strong> ou use um terminal moderno como o <strong>Windows Terminal</strong>.</li>
+</ul>
+
+<h3 id="82-problema-de-codificação-interrogações">8.2. Problema de Codificação (Interrogações)</h3>
+
+<p>Caso as peças apareçam como interrogações (<code class="language-plaintext highlighter-rouge">?</code>), o terminal não está interpretando UTF-8 corretamente.</p>
+
+<ul>
+  <li><strong>Solução:</strong> Antes de iniciar o jogo, execute o seguinte comando no terminal:</li>
+</ul>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">chcp</span><span class="w"> </span><span class="nx">65001</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="83-compilação-manual-método-alternativo">8.3. Compilação Manual (Método Alternativo)</h3>
+
+<p>Caso opte por não utilizar os scripts de automação, utilize os comandos abaixo na raiz do projeto para compilar e executar manualmente:</p>
+
+<p><strong>No Linux / macOS:</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> bin
+javac <span class="nt">-d</span> bin <span class="nt">-encoding</span> UTF-8 <span class="si">$(</span>find src/main/java <span class="nt">-name</span> <span class="s2">"*.java"</span><span class="si">)</span>
+java <span class="nt">-Dfile</span>.encoding<span class="o">=</span>UTF-8 <span class="nt">-cp</span> bin main.java.com.work.chess.application.Main
+</code></pre></div></div>
+
+<p><strong>No Windows (PowerShell):</strong></p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">Test-Path</span><span class="w"> </span><span class="nx">bin</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">New-Item</span><span class="w"> </span><span class="nt">-ItemType</span><span class="w"> </span><span class="nx">Directory</span><span class="w"> </span><span class="nt">-Force</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="nx">bin</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="n">Get-ChildItem</span><span class="w"> </span><span class="nt">-Recurse</span><span class="w"> </span><span class="nt">-Filter</span><span class="w"> </span><span class="o">*.</span><span class="nf">java</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ForEach-Object</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">javac</span><span class="w"> </span><span class="nt">-d</span><span class="w"> </span><span class="nx">bin</span><span class="w"> </span><span class="nt">-encoding</span><span class="w"> </span><span class="nx">UTF-8</span><span class="w"> </span><span class="bp">$_</span><span class="o">.</span><span class="nf">FullName</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="n">java</span><span class="w"> </span><span class="nt">-Dfile</span><span class="o">.</span><span class="nf">encoding</span><span class="o">=</span><span class="n">UTF-8</span><span class="w"> </span><span class="nt">-cp</span><span class="w"> </span><span class="nx">bin</span><span class="w"> </span><span class="nx">main.java.com.work.chess.application.Main</span><span class="w">
+</span></code></pre></div></div>
+
+    </main>
+  </body>
+</html>

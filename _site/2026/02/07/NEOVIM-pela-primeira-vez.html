@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NEOVIM: Primeiras Impressões | Smelteir's Homepage</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container">
+        <a href="/" class="">HOME</a>
+        <a href="/about" class=""
+          >ABOUT</a
+        >
+        <a
+          href="/projects"
+          class=""
+          >PROJECTS</a
+        >
+      </nav>
+    </header>
+    <main class="site-content">
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">NEOVIM: Primeiras Impressões</h1>
+
+    
+     <p class="post-description">Minha primeira vez tentando usar Neovim de fato.</p>
+    
+
+    
+    <time class="post-date"> 07/02/2026 </time>
+    
+  </header>
+
+  <section class="post-content"><p>Quando comecei a aprender mais sobre programação, sempre li e ouvi discussões sobre qual seria a melhor <em>IDE</em> (<em>Integrated Development Environment</em>) para desenvolvimento de software, e nunca vi uma resposta definitiva. Provavelmente porque ela não existe. No fim das contas, tudo se resume a gosto pessoal.</p>
+
+<p>Sempre gostei bastante do <em>VS Code</em>. Me acostumei com ele desde o início da graduação, quando o utilizamos na disciplina de Algoritmos e Programação de Computadores (a.k.a. PROG1). É uma ferramenta robusta, com ótimos complementos para praticamente todas as linguagens com as quais já tive contato.</p>
+
+<p>Com o tempo, comecei a ver muitos vídeos sobre <em>Vim</em> e <em>Neovim</em> no <em>YouTube</em>, e isso chamou bastante minha atenção. A proposta é interessante: um editor de texto que roda no terminal e que você pode customizar praticamente sem limites, chegando bem perto de uma <em>IDE</em> completa, só que muito mais leve e flexível. Isso foi o suficiente para me convencer a tentar.</p>
+
+<p>Entre <em>Vim</em> e <em>Neovim</em>, acabei optando pelo <em>Neovim</em>, principalmente por ele ser um pouco mais amigável para iniciantes e ter um ecossistema mais moderno. Nesse processo, descobri o <em>LazyVim</em>, que facilita bastante a configuração inicial e a instalação de <em>plugins</em>.</p>
+
+<div class="center-image-wrapper">
+  <img src="/assets/lazy_vim_initial.png" alt="Tela Inicial do LazyVim" class="center-image" />
+  <p class="image-caption">Imagem 1 - Tela inicial do LazyVim</p>
+</div>
+
+<p>Mesmo já tendo uma noção básica dos comandos, a adaptação não foi simples. Quando começamos a usar o teclado, nos acostumamos a mover o cursor com as setinhas, mas no <em>Vim/Neovim</em> isso muda completamente. Aqui usamos <code class="language-plaintext highlighter-rouge">h</code>, <code class="language-plaintext highlighter-rouge">j</code>, <code class="language-plaintext highlighter-rouge">k</code> e <code class="language-plaintext highlighter-rouge">l</code> para mover o cursor para a esquerda, baixo, cima e direita, respectivamente. Sim, é estranho no começo. Forçar o uso dessas teclas chega a parecer uma pequena tortura, porque o cérebro insiste em ir para as setas. Ainda assim, decidi persistir e me obrigar a usar os motions.</p>
+
+<p>Depois disso, fui atrás das configurações essenciais para as linguagens que utilizo. Pelo <em>Mason</em>, uma ferramenta que já vem integrada ao <em>LazyVim</em>, instalei os <em>LSPs</em> (<em>Language Server Protocol</em>) para <em>C/C++, Python, Java</em>, entre outros, além de algumas ferramentas adicionais, como o <em>Prettier</em>. A facilidade para instalar e gerenciar esse tipo de coisa foi uma grata surpresa.</p>
+
+<p>Também acabei modificando algumas <em>keybinds</em> para facilitar meu dia a dia. Um exemplo simples: para selecionar todo o conteúdo de um arquivo no <em>Vim</em>, normalmente fazemos <code class="language-plaintext highlighter-rouge">ggVG</code>, onde <code class="language-plaintext highlighter-rouge">gg</code> vai para o início do arquivo, <code class="language-plaintext highlighter-rouge">V</code> entra no modo visual por linha e <code class="language-plaintext highlighter-rouge">G</code> vai para o final. Apesar de não ser um comando enorme, dá para simplificar bastante. Mapeei tudo isso para <code class="language-plaintext highlighter-rouge">&lt;C-a&gt;</code>, imitando o clássico <code class="language-plaintext highlighter-rouge">Ctrl + A</code> dos editores tradicionais. Muito mais prático.</p>
+
+<p>Outra customização interessante foi em relação às janelas. Para abrir uma nova, normalmente é preciso entrar no modo de comando (<code class="language-plaintext highlighter-rouge">:</code>) e digitar <code class="language-plaintext highlighter-rouge">tabedit</code>. Para agilizar, criei um atalho (<code class="language-plaintext highlighter-rouge">tr</code>, no modo normal) que faz isso automaticamente.</p>
+
+<p><em>Disclaimer</em>: ainda não tenho certeza se o termo “janela” é o mais correto aqui. Já vi muita gente se referindo a isso como <em>buffer</em>. Ainda estou aprendendo essas distinções.</p>
+
+<p>Também mapeei os comandos <code class="language-plaintext highlighter-rouge">sh</code>, <code class="language-plaintext highlighter-rouge">sj</code>, <code class="language-plaintext highlighter-rouge">sk</code> e <code class="language-plaintext highlighter-rouge">sl</code> para navegar entre janelas, o que deixou tudo bem mais intuitivo.</p>
+
+<p>Talvez você tenha reparado que mencionei termos como “modo normal” e “modo de visualização”. Essa é uma das principais características do <em>Vim/Neovim</em>: ele é um editor modal. No <em>normal</em> mode você usa os <em>motions</em> e comandos para navegar e manipular o texto. No <em>insert</em> mode é onde você realmente digita e edita o conteúdo. Existem outros modos, como o visual, mas ainda não me aprofundei o suficiente neles, então vou deixar isso para outro momento.</p>
+
+<p>Personalizei mais algumas coisas: troquei o tema, ajustei a fonte do terminal e fiz pequenas mudanças estéticas e funcionais. Nada muito avançado, mas o suficiente para deixar o ambiente confortável.</p>
+
+<p>No geral, a experiência inicial com o <em>Neovim</em> foi muito positiva. Estou escrevendo esta própria postagem usando ele agora, o que já diz bastante. Ainda tenho dificuldade com alguns <em>motions</em> e com a troca constante de modos, mas isso faz parte do processo. Também não curti muito os <em>formatters</em> de código, mas isso não é um problema do <em>Neovim</em> em si.</p>
+
+<p>Por enquanto, é isso. Estou animado para continuar usando a ferramenta e, quem sabe no futuro, escrever um novo post contando como foi essa evolução.</p>
+</section>
+</article>
+
+    </main>
+  </body>
+</html>
