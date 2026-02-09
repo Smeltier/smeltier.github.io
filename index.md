@@ -6,9 +6,10 @@ title: Home
 ## POSTS:
 
 <ul>
+  {% assign total = site.posts | size %}
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
+      {{ total | minus: forloop.index0 }}. <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>
