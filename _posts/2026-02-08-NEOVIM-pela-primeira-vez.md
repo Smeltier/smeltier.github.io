@@ -14,7 +14,7 @@ Com o tempo, comecei a ver muitos vídeos sobre _Vim_ e _Neovim_ no _YouTube_, e
 
 Entre _Vim_ e _Neovim_, acabei optando pelo _Neovim_, principalmente por ele ser um pouco mais amigável para iniciantes e ter um ecossistema mais moderno. Nesse processo, descobri o _LazyVim_, que facilita bastante a configuração inicial e a instalação de _plugins_.
 
-<img src="../assets/lazy_vim_initial.png" alt="Tela Inicial do LazyVim" class="center-image" />
+<img src="/assets/lazy_vim_initial.png" alt="Tela Inicial do LazyVim" class="center-image" />
 <p class="image-caption">Imagem 1 - Tela inicial do LazyVim</p>
 
 Mesmo já tendo uma noção básica dos comandos, a adaptação não foi simples. Quando começamos a usar o teclado, nos acostumamos a mover o cursor com as setinhas, mas no _Vim/Neovim_ isso muda completamente. Aqui usamos `h`, `j`, `k` e `l` para mover o cursor para a esquerda, baixo, cima e direita, respectivamente. Sim, é estranho no começo. Forçar o uso dessas teclas chega a parecer uma pequena tortura, porque o cérebro insiste em ir para as setas. Ainda assim, decidi persistir e me obrigar a usar os motions.
