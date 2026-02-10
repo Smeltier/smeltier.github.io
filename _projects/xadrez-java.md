@@ -64,6 +64,8 @@ Em seguida, execute:
 ./play.sh
 ```
 
+---
+
 ## Configurações da Partida
 
 Ao iniciar o jogo, o sistema solicitará:
@@ -72,6 +74,8 @@ Ao iniciar o jogo, o sistema solicitará:
 2. **Definição das peças brancas**, escolhendo qual jogador inicia a partida
     - Digite `1` para o Jogador 1
     - Digite `2` para o Jogador 2
+
+---
 
 ## Interface e Comandos
 
@@ -98,6 +102,8 @@ O sistema valida automaticamente:
 - Geometria válida do movimento
 - Ausência de obstruções no trajeto (exceto para o Cavalo)
 - Segurança do Rei (movimentos que resultem em auto-xeque são bloqueados)
+
+---
 
 ### Movimentos Especiais
 
@@ -132,6 +138,8 @@ Transformação obrigatória de um peão que atinge a última fileira do tabulei
 
 - **Resultado:** O peão é imediatamente substituído pela peça escolhida na mesma casa.
 
+---
+
 ## Estados do Jogo
 
 O sistema fornece feedback em tempo real sobre o estado da partida:
@@ -140,6 +148,8 @@ O sistema fornece feedback em tempo real sobre o estado da partida:
 - **Erro de movimento:** Informa tentativas de jogadas ilegais (geometria incorreta, obstrução ou exposição do Rei ao perigo).
 - **Xeque-mate:** Ocorre quando o Rei está em xeque e não existem movimentos legais disponíveis. O sistema encerra a execução e declara o vencedor.
 - **Empate por afogamento (Stalemate):** Ocorre quando o jogador que tem a vez de jogar não possui movimentos legais, mas seu Rei não está em xeque. O sistema encerra a partida declarando empate.
+
+---
 
 ## Problemas Comuns e Soluções
 
@@ -178,4 +188,3 @@ if (!(Test-Path bin)) { New-Item -ItemType Directory -Force -Path bin }
 Get-ChildItem -Recurse -Filter *.java | ForEach-Object { javac -d bin -encoding UTF-8 $_.FullName }
 java -Dfile.encoding=UTF-8 -cp bin main.java.com.work.chess.application.Main
 ```
-
