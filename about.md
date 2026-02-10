@@ -27,3 +27,8 @@ Estou aberto a novas oportunidades e colaborações que possibilitem crescimento
 
 - Minicurso: Estruturas de Dados e Algoritmos - Augusto Galego _(Abr 2025)_;
 - Minicurso: Algoritmos e Lógica de Programação - O Curso COMPLETO - Nélio Alves _(Jan 2025)_;
+
+## Onde me encontrar:
+
+- GitHub: [github.com/Smeltier](https://github.com/Smeltier)
+- LinkedIn: [linkedin.com/in/gabrielgoncalvescastro](https://www.linkedin.com/in/gabrielgoncalvescastro/)

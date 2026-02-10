@@ -15,7 +15,7 @@ Com o tempo, comecei a ver muitos vídeos sobre _Vim_ e _Neovim_ no _YouTube_, e
 Entre _Vim_ e _Neovim_, acabei optando pelo _Neovim_, principalmente por ele ser um pouco mais amigável para iniciantes e ter um ecossistema mais moderno. Nesse processo, descobri o _LazyVim_, que facilita bastante a configuração inicial e a instalação de _plugins_.
 
 <div class="center-image-wrapper">
-  <img src="/assets/lazy_vim_initial.png" alt="Tela Inicial do LazyVim" class="center-image" />
+  <img src="/assets/images/lazy_vim_initial.png" alt="Tela Inicial do LazyVim" class="center-image" />
   <p class="image-caption">Imagem 1 - Tela inicial do LazyVim</p>
 </div>
 

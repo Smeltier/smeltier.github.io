@@ -49,6 +49,10 @@ nav a.active {
 
 .post-header {
   text-align: center;
+  background: #1e293b;
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
   margin: 4rem 0 3rem;
 }
 
@@ -114,13 +118,13 @@ nav a.active {
   margin-left: auto;
   margin-right: auto;
   height: auto;
+  border-radius: 5px;
   max-width: 600px;
 }
 
 .image-caption {
   text-align: center;
   font-size: 0.9rem;
-  color: #555;
   margin-top: 4px;
   margin-bottom: 20px;
 }
@@ -138,7 +142,6 @@ nav a.active {
 
 .center-image-wrapper .image-caption {
   font-size: 0.9rem;
-  color: #555;
   margin-top: 0.5rem;
   text-align: center;
 }

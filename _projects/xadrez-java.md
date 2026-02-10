@@ -1,93 +1,107 @@
 ---
-layout: default
+layout: projects
 title: Xadrez em Java
-description: Jogo de xadrez feito totalmente em Java.
+description: Implementação de um jogo de xadrez em linha de comando, desenvolvido em Java com foco em modelagem orientada a objetos.
 date: 2025-12-15
 tags: [Java, dev]
 github: https://github.com/Smeltier/xadrez
 ---
 
-## 1. Visão Geral
+## Visão Geral
 
-Este documento fornece as diretrizes para a execução e operação do sistema de Xadrez baseado em linha de comando (CLI), desenvolvido em linguagem Java. O sistema implementa as regras oficiais da FIDE (Federação Internacional de Xadrez), incluindo validação rigorosa de movimentos, detecção de estados de jogo (xeque/xeque-mate/afogamento) e movimentos especiais, utilizando uma arquitetura orientada a objetos (MVC).
+Este projeto é uma implementação completa de um **jogo de xadrez em linha de comando (CLI)**, desenvolvido inteiramente em Java. O foco principal está na **modelagem orientada a objetos**, na validação rigorosa das regras do jogo e na separação clara de responsabilidades entre as camadas do sistema.
 
-## 2. Requisitos do Sistema
+O motor do jogo implementa as regras oficiais da FIDE, incluindo verificação de movimentos legais, detecção de **xeque, xeque-mate e afogamento**, além do suporte a movimentos especiais como **roque, en passant e promoção de peões**.
 
-Para a execução adequada do software, o ambiente deve possuir:
+A arquitetura segue uma organização inspirada em **MVC**, permitindo evolução e manutenção do código de forma organizada e previsível.
 
-- **Java Development Kit (JDK):** Versão 17 ou superior instalada e configurada nas variáveis de ambiente.
-- **Terminal de Comando:** Bash (Linux/macOS), PowerShell ou CMD (Windows).
+<div class="center-image-wrapper">
+  <img src="/assets/images/xadrez-cli.png" alt="Foto do jogo rodando no terminal" class="center-image" />
+</div>
 
-## 3. Instalação e Execução (Via Scripts)
+---
 
-O projeto inclui scripts de automação na raiz do diretório para facilitar a compilação e execução imediata.
+## Objetivos do Projeto
 
-### 3.1. Execução no Windows
+O desenvolvimento deste projeto teve como principais objetivos:
 
-Para ambientes Windows, utilize o arquivo em lote `.bat`:
+- Praticar modelagem orientada a objetos em um domínio com regras complexas
+- Aplicar validação consistente de estados e transições do jogo
+- Explorar separação entre lógica de negócio e interface (CLI)
+- Consolidar o uso de Java moderno (JDK 17+)
+- Desenvolver um motor de xadrez funcional sem dependência de interfaces gráficas
 
-1. Navegue até o diretório raiz do projeto.
-2. Dê um duplo clique no arquivo `play.bat` ou execute-o via terminal:
+---
 
-```cmd
-play.bat
-```
+## Requisitos
 
-### 3.2. Execução no Linux / macOS
+Para executar o projeto, é necessário:
 
-Para ambientes Unix-based, utilize o script Shell `.sh`:
+- **Java Development Kit (JDK)** versão 17 ou superior
+- **Terminal de comando** (Bash, PowerShell ou CMD)
 
-1. Abra o terminal no diretório raiz do projeto.
-2. Conceda permissão de execução ao script (necessário apenas na primeira vez):
+---
 
-```bash
+## Executando o Projeto
+
+O repositório inclui scripts de automação que simplificam a compilação e execução do jogo.
+
+### Windows
+
+Na raiz do projeto, execute: `cmd play.bat`
+
+### Linux/macOS
+
+Conceda permissão de execução (apenas na primeira vez):
+
+```sh
 chmod +x play.sh
 ```
 
-3. Execute o script:
+Em seguida, execute:
 
-```bash
+```sh
 ./play.sh
 ```
 
-## 4. Configuração da Partida
+## Configurações da Partida
 
-Ao inicializar o sistema, será necessário configurar os parâmetros da partida:
+Ao iniciar o jogo, o sistema solicitará:
 
-1. **Definição dos Jogadores:** Insira os nomes para o Jogador 1 e Jogador 2 conforme solicitado.
-2. **Sorteio de Cores:** O sistema solicitará a definição do condutor das peças BRANCAS.
+1. **Nome dos jogadores**
+2. **Definição das peças brancas**, escolhendo qual jogador inicia a partida
+    - Digite `1` para o Jogador 1
+    - Digite `2` para o Jogador 2
 
-- Digite `1` para selecionar o Jogador 1.
-- Digite `2` para selecionar o Jogador 2.
+## Interface e Comandos
 
-## 5. Interface e Comandos de Jogo
+O tabuleiro é renderizado diretamente no terminal utilizando **caracteres Unicode**.
+As coordenadas seguem o padrão internacional do xadrez:
 
-O tabuleiro é renderizado via console utilizando caracteres Unicode. O sistema de coordenadas segue o padrão internacional:
+- **Colunas:** letras de `a` a `h`
+- **Linhas:** números de `1` a `8`
 
-- **Colunas:** Letras de **a** a **h**.
-- **Linhas:** Números de **1** a **8**.
+### Movimentação das Peças
 
-### 5.1. Realizando Movimentos
+Os comandos de jogada seguem o formato:
 
-A entrada de dados deve seguir a **Notação Algébrica Completa**, especificando a coordenada de origem e a coordenada de destino separadas por um espaço.
+```css
+[origem] [destino]
+```
 
-- **Sintaxe:** `[origem] [destino]`
-- **Exemplo:** `e2 e4` (Move a peça da casa e2 para a casa e4).
+#### Exemplo: `e2 e4`
 
-### 5.2. Validação de Regras
+O sistema valida automaticamente:
 
-O motor do jogo processa cada entrada verificando:
+- Existência da peça na casa de origem
+- Cor da peça em relação ao turno atual
+- Geometria válida do movimento
+- Ausência de obstruções no trajeto (exceto para o Cavalo)
+- Segurança do Rei (movimentos que resultem em auto-xeque são bloqueados)
 
-- A existência de peça na origem e a correspondência de cor com o turno atual.
-- A geometria válida de movimento da peça específica.
-- A inexistência de obstruções no trajeto (exceto para o Cavalo).
-- A legalidade do movimento em relação à segurança do Rei (impossibilidade de auto-xeque).
+### Movimentos Especiais
 
-## 6. Movimentos Especiais
-
-O sistema suporta manobras avançadas que requerem entradas específicas ou condições de contexto.
-
-### 6.1. Roque (Castling)
+#### Roque (Castling)
 
 Permite o movimento simultâneo do Rei e da Torre.
 
@@ -96,7 +110,7 @@ Permite o movimento simultâneo do Rei e da Torre.
 - **Comando (Pretas):** `e8 g8` (Roque Menor) ou `e8 c8` (Roque Maior).
 - _Nota: A Torre será movida automaticamente pelo sistema se a manobra for válida e o caminho estiver seguro._
 
-### 6.2. En Passant
+#### En Passant
 
 Captura especial de peões.
 
@@ -104,7 +118,7 @@ Captura especial de peões.
 - **Execução:** O jogador deve mover seu peão para a casa diagonal vazia imediatamente atrás do peão adversário.
 - **Comando:** Inserir as coordenadas de origem e da casa de destino (vazia).
 
-### 6.3. Promoção (Promotion)
+#### Promoção (Promotion)
 
 Transformação obrigatória de um peão que atinge a última fileira do tabuleiro.
 
@@ -118,24 +132,24 @@ Transformação obrigatória de um peão que atinge a última fileira do tabulei
 
 - **Resultado:** O peão é imediatamente substituído pela peça escolhida na mesma casa.
 
-## 7. Estados do Jogo
+## Estados do Jogo
 
 O sistema fornece feedback em tempo real sobre o estado da partida:
 
-- **ALERTA DE XEQUE:** Indica que o Rei está sob ataque imediato. O jogador é obrigado a realizar um movimento defensivo.
-- **ERRO DE MOVIMENTO:** Informa tentativas de jogadas ilegais (geometria incorreta, obstrução ou exposição do Rei ao perigo).
-- **XEQUE-MATE:** Ocorre quando o Rei está em xeque e não existem movimentos legais disponíveis. O sistema encerra a execução e declara o vencedor.
-- **EMPATE POR AFOGAMENTO (STALEMATE):** Ocorre quando o jogador que tem a vez de jogar não possui movimentos legais, mas seu Rei não está em xeque. O sistema encerra a partida declarando empate.
+- **Xeque:** Indica que o Rei está sob ataque imediato. O jogador é obrigado a realizar um movimento defensivo.
+- **Erro de movimento:** Informa tentativas de jogadas ilegais (geometria incorreta, obstrução ou exposição do Rei ao perigo).
+- **Xeque-mate:** Ocorre quando o Rei está em xeque e não existem movimentos legais disponíveis. O sistema encerra a execução e declara o vencedor.
+- **Empate por afogamento (Stalemate):** Ocorre quando o jogador que tem a vez de jogar não possui movimentos legais, mas seu Rei não está em xeque. O sistema encerra a partida declarando empate.
 
-## 8. Solução de Problemas e Avançado
+## Problemas Comuns e Soluções
 
-### 8.1. Problema de Fonte (Retângulos/Quadrados)
+### Problema de Fonte (Retângulos/Quadrados)
 
 Caso as peças apareçam como retângulos vazios (`□`), o terminal está usando uma fonte que não suporta símbolos de xadrez Unicode.
 
 - **Solução:** Nas propriedades do terminal (Prompt de Comando ou PowerShell), altere a fonte para **MS Gothic**, **NSimSun** ou use um terminal moderno como o **Windows Terminal**.
 
-### 8.2. Problema de Codificação (Interrogações)
+### Problema de Codificação (Interrogações)
 
 Caso as peças apareçam como interrogações (`?`), o terminal não está interpretando UTF-8 corretamente.
 
@@ -145,7 +159,7 @@ Caso as peças apareçam como interrogações (`?`), o terminal não está inter
 chcp 65001
 ```
 
-### 8.3. Compilação Manual (Método Alternativo)
+### Compilação Manual (Método Alternativo)
 
 Caso opte por não utilizar os scripts de automação, utilize os comandos abaixo na raiz do projeto para compilar e executar manualmente:
 
@@ -164,3 +178,4 @@ if (!(Test-Path bin)) { New-Item -ItemType Directory -Force -Path bin }
 Get-ChildItem -Recurse -Filter *.java | ForEach-Object { javac -d bin -encoding UTF-8 $_.FullName }
 java -Dfile.encoding=UTF-8 -cp bin main.java.com.work.chess.application.Main
 ```
+
