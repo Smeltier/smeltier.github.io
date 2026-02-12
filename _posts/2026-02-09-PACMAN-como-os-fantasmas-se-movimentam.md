@@ -62,3 +62,10 @@ Caso queira ver como tudo isso se traduz em código, fique à vontade para acess
 
 E se estiver interessado em apenas jogar, você também pode baixar uma versão alpha básica para se divertir e testar se consegue prever o movimento deles!
 
+### Referências e Recomendações
+
+Para escrever este post e desenvolver o meu projeto, me baseei em alguns conteúdos que explicam com detalhes visuais incríveis como esses algoritmos funcionam. Recomendo muito:
+
+* [Pac-Man Ghost AI Explained](https://www.youtube.com/watch?v=ataGotQ7ir8) - Vídeo essencial do canal Retro Game Mechanics Explained que mostra visualmente os alvos de cada fantasma.
+
+* [How Frightened Ghosts Decide Where to Go](https://www.youtube.com/watch?v=eFP0_rkjwlY) - Outro vídeo do canal Retro Game Mechanics Explained que mostra visualmente como os fantasmas assustados escolhem qual direção seguir.
