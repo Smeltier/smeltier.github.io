@@ -24,7 +24,19 @@
           class="{% if page.url == '/projects/' %}active{% endif %}"
           >PROJECTS</a
         >
-        <button class="theme-toggle" id="theme-toggle" type="button">☾</button>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Alternar tema"
+          aria-pressed="false"
+        >
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-icon theme-toggle-icon-sun">☀</span>
+            <span class="theme-toggle-icon theme-toggle-icon-moon">☾</span>
+            <span class="theme-toggle-thumb"></span>
+          </span>
+        </button>
       </nav>
     </header>
     <main class="site-content">
@@ -34,7 +46,8 @@
       var btn = document.getElementById("theme-toggle");
       var root = document.documentElement;
       function updateLabel() {
-        btn.textContent = root.getAttribute("data-theme") === "dark" ? "☀" : "☾";
+        var isDark = root.getAttribute("data-theme") === "dark";
+        btn.setAttribute("aria-pressed", isDark ? "true" : "false");
       }
       updateLabel();
       btn.addEventListener("click", function () {

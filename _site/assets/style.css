@@ -63,6 +63,8 @@ nav a:hover {
   color: var(--accent);
 }
 
+    --toggle-track: #d7d2cb;
+    --toggle-thumb: #faf9f7;
 nav a.active {
   color: var(--accent);
   text-underline-offset: 4px;
@@ -74,6 +76,8 @@ nav a.active {
   color: var(--text);
   border-radius: 4px;
   padding: 0.3rem 0.6rem;
+    --toggle-track: #2d2d32;
+    --toggle-thumb: #161618;
   font-size: 0.8rem;
   cursor: pointer;
   font-family: var(--font-sans);
@@ -81,7 +85,7 @@ nav a.active {
 
 .theme-toggle:hover {
   border-color: var(--accent);
-  color: var(--accent);
+    background: var(--toggle-track);
 }
 
 .container {
@@ -93,7 +97,7 @@ nav a.active {
   max-width: var(--content-width);
   margin: auto;
 }
-
+    background: var(--toggle-thumb);
 .post-header {
   text-align: left;
   border-bottom: 1px solid var(--border);
