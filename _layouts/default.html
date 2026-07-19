@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page.title }} | {{ site.title }}</title>
     <link rel="stylesheet" href="/assets/style.css" />
+    <script>
+      (function () {
+        var saved = localStorage.getItem("theme");
+        if (saved) document.documentElement.setAttribute("data-theme", saved);
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -18,10 +24,30 @@
           class="{% if page.url == '/projects/' %}active{% endif %}"
           >PROJECTS</a
         >
+        <button class="theme-toggle" id="theme-toggle" type="button">☾</button>
       </nav>
     </header>
     <main class="site-content">
       {{ content }}
     </main>
+    <script>
+      var btn = document.getElementById("theme-toggle");
+      var root = document.documentElement;
+      function updateLabel() {
+        btn.textContent = root.getAttribute("data-theme") === "dark" ? "☀" : "☾";
+      }
+      updateLabel();
+      btn.addEventListener("click", function () {
+        var isDark = root.getAttribute("data-theme") === "dark";
+        if (isDark) {
+          root.removeAttribute("data-theme");
+          localStorage.setItem("theme", "light");
+        } else {
+          root.setAttribute("data-theme", "dark");
+          localStorage.setItem("theme", "dark");
+        }
+        updateLabel();
+      });
+    </script>
   </body>
 </html>

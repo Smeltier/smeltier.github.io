@@ -1,15 +1,43 @@
+:root {
+  --bg: #faf9f7;
+  --bg-elevated: #f0efec;
+  --text: #1a1a1a;
+  --text-secondary: #6b6b6b;
+  --accent: #8a5a2f;
+  --border: #e0ddd7;
+  --code-bg: #f0efec;
+  --code-text: #8a5a2f;
+
+  --font-serif: Georgia, "Iowan Old Style", "Source Serif 4", serif;
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --content-width: 680px;
+}
+
+[data-theme="dark"] {
+  --bg: #161618;
+  --bg-elevated: #1e1e21;
+  --text: #e8e6e3;
+  --text-secondary: #9a9891;
+  --accent: #d4a373;
+  --border: #2a2a2e;
+  --code-bg: #232326;
+  --code-text: #d4a373;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
-  background: #0f172a;
-  color: #e5e7eb;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
   margin: 0;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 a {
-  color: #38bdf8;
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -19,22 +47,41 @@ a:hover {
 
 nav {
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 2rem;
 }
 
 nav a {
-  color: #e5e7eb;
+  color: var(--text);
   font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
 }
 
 nav a:hover {
-  color: #38bdf8;
+  color: var(--accent);
 }
 
 nav a.active {
-  text-decoration: underline;
+  color: var(--accent);
   text-underline-offset: 4px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .container {
@@ -43,55 +90,63 @@ nav a.active {
 }
 
 .post {
-  max-width: 800px;
+  max-width: var(--content-width);
   margin: auto;
 }
 
 .post-header {
-  text-align: center;
-  background: #1e293b;
-  border-radius: 5px;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  margin: 4rem 0 3rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  margin: 3rem 0 3rem;
+  padding-bottom: 1.5rem;
 }
 
 .post-title {
-  font-size: 2.4rem;
-  line-height: 1.2;
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
 }
 
 .post-description {
   display: block;
   margin-top: 0.5rem;
-  font-size: 1rem;
-  color: #94a3b8;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-secondary);
 }
 
 .post-date {
   display: block;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #94a3b8;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 .post-content {
-  line-height: 1.7;
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.post-content h2 {
+  font-family: var(--font-serif);
+  margin-top: 2.5rem;
 }
 
 .post-content em, .post-content i {
-  color: #38bdf8;
+  color: var(--accent);
   font-style: italic;
-};
+}
 
 .post-content code {
-  background: #1e293b;
-  color: #7dd3fc;
-  padding: 0.2rem 0 0.4rem;
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-family: ui-monospace, monospace;
-  font-size: 0.9em:
-  border: 1px solid #334155;
+  font-size: 0.9em;
+  border: 1px solid var(--border);
 }
 
 .site-content {
@@ -101,16 +156,17 @@ nav a.active {
 }
 
 .site-header {
-  background: #1e293b;
-  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
   display: flex;
   justify-content: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .site-header .container {
   max-width: none;
   margin: 0;
+  gap: 2rem;
 }
 
 .center-image {
@@ -118,13 +174,14 @@ nav a.active {
   margin-left: auto;
   margin-right: auto;
   height: auto;
-  border-radius: 5px;
+  border-radius: 4px;
   max-width: 600px;
 }
 
 .image-caption {
   text-align: center;
   font-size: 0.9rem;
+  color: var(--text-secondary);
   margin-top: 4px;
   margin-bottom: 20px;
 }
@@ -138,6 +195,7 @@ nav a.active {
   max-width: 80%;
   height: auto;
   display: inline-block;
+  border-radius: 4px;
 }
 
 .center-image-wrapper .image-caption {
@@ -145,5 +203,3 @@ nav a.active {
   margin-top: 0.5rem;
   text-align: center;
 }
-
-
